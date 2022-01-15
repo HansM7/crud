@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="content_title">
+    <h1>Seccion agregar alumno</h1>
+    <br />
+    <div class="content_form">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for campo in formulario %}
+            <div class="">
+                <label>
+                {{campo.label}}
+                </label>
+                <input
+                class="form-control"
+                name="{{campo.name}}"
+                type="{{campo.field.widget.input_type}}"
+                />
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary mt-4">Guardar</button>
+        </form>
+    </div>
+</div>
+
+{% endblock body %}

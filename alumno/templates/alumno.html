@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="body">
+    <div class="content_title">
+        <h3>Sección alumnos</h3>
+        <a style="margin-left: 20px;" href="{% url 'crear_alumno' %}" class="btn btn-primary">Añadir alumno</a>
+    </div>
+    
+    <table style="width:100%" class="table table-striped">
+        <tr>
+            <th>Foto</th>
+            <th>Nombre</th>
+            <th>Celular</th>
+            <th colspan="2">Acciones</th>
+        </tr>
+        {% for alumno in  data %}
+        <tr>
+            <td><img src="{{alumno.imagen.url}}" alt="" width="100"></td>
+            <td>{{alumno.nombre}}</td>
+            <td>{{alumno.celular}}</td>
+            <td> <a href="{% url 'eliminar' alumno.id %}" class="btn btn-danger">Eliminar</a> </td>
+            <td> <a href="{% url 'modificar' alumno.id %}" class="btn btn-success">Modificar</a> </td>
+        </tr>
+        {% endfor %}
+        
+    </table>
+</div>
+{% endblock body %}
